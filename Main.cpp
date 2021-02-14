@@ -8,44 +8,91 @@ struct Monk
 {
     int health;
     int attack;
-    unsigned char x_coordinate;
-    unsigned char y_coordinate;
+    unsigned char x_axis;
+    unsigned char y_axis;
 };
 
 struct Monster
 {   
     int health;
     int attack;
-    unsigned char x_coordinate;
-    unsigned char y_coordinate;
+    unsigned char x_axis;
+    unsigned char y_axis;
 };
 
 int main()
 {
     cout<<" Welcome to the Dungeon!!" << endl;
+    bool hero_win = false;
 
     unsigned char room[10][10] = {
+        {1,0,1,1,1,1,1,1,1,1},
+        {1,1,1,1,1,1,1,1,1,1},
+        {1,1,0,0,0,0,1,1,1,1},
         {1,1,1,1,1,1,1,1,1,1},
         {1,1,1,1,1,1,1,1,1,1},
         {1,1,1,1,1,1,1,1,1,1},
-        {1,1,1,1,1,1,1,1,1,1},
-        {1,1,1,1,1,1,1,1,1,1},
-        {1,1,1,1,1,1,1,1,1,1},
-        {1,1,1,1,1,1,1,1,1,1},
-        {1,1,1,1,1,1,1,1,1,1},
-        {1,1,1,1,1,1,1,1,1,1},
+        {1,0,1,1,1,1,1,1,1,1},
+        {1,1,0,0,1,0,1,1,0,1},
+        {1,1,1,1,1,1,0,0,1,1},
         {1,1,1,1,1,1,1,1,1,1},
     };
 
-    Monk m1;
-    m1.health = 15;
-    m1.attack = 3;
-    m1.x_coordinate = 5;
-    m1.y_coordinate = 5;
+    Monk Tom;
+    Tom.health = 15;
+    Tom.attack = 3;
+    Tom.x_axis = 5;
+    Tom.y_axis = 5;
 
-    Monster e1;
+    Monster Hydra;
+    Monster Mantis;
+    Hydra.health=6;
+    Mantis.health=9;
+    Hydra.x_axis=2;
+    Hydra.y_axis=2;
+    Mantis.x_axis=6;
+    Mantis.y_axis=6;
+    Hydra.attack=2;
+    Mantis.attack=1;
 
-    cout<< "Attack of monk is " << m1.attack << endl;
+    char key = 0;
+
+    //----Map---//
+    if(hero_win=true){
+        for(int i = 0; i < 10; i++){
+            cout <<  endl;
+            for(int j = 0; j < 10; j++){
+                if(i == Tom.x_axis && j == Tom.y_axis){
+                    cout << char(2);
+                }
+                else if(room[i][j] == 1){
+                    cout << (unsigned char)'#';
+                }
+                 else if(room[i][j] == 0){
+                    cout << (unsigned char)' ';
+                }
+                 else if(room[i][j] == 2){
+                    cout << (unsigned char)'H';
+                }
+                 else if(room[i][j] == 3){
+                    cout << (unsigned char)'M';
+                }
+                 else if(room[i][j] == 4){
+                    cout << (unsigned char)'T';
+                }
+                hero_win = false;
+            }
+
+        }
+    }
+    cout << endl;
+    
+
+
+
+
+
+    cout << "Attack of monk is " << Tom.attack << endl;
     
 
   return 0;
