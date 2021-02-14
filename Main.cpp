@@ -56,6 +56,7 @@ int main()
     Mantis.attack=1;
 
     char key = 0;
+    while(key!='q'){
 
     //----Map---//
     if(hero_win=true){
@@ -86,14 +87,45 @@ int main()
         }
     }
     cout << endl;
-    
 
-
-
-
-
+    //---Move---//
     cout << "Attack of monk is " << Tom.attack << endl;
+    cout << "Health of monk is " << Tom.health << endl;
+    cout << "To move upwards press 'W', left 'A', down 'S', right 'D'" << endl;
+    cout << "Make your move" << endl;
+    cin >> key;
+
+    if(key == 's' && Tom.y_axis < 10 && room[Tom.y_axis+1][Tom.x_axis] != 1){
+        Tom.y_axis++; system("cls");
+    }
+
+    if(key == 'w' && Tom.y_axis > 0 && room[Tom.y_axis-1][Tom.x_axis] != 1){
+        Tom.y_axis--; system("cls");
+    }
+
+    if(key == 'a' && Tom.x_axis > 0 && room[Tom.y_axis][Tom.x_axis-1] != 1){
+        Tom.x_axis--; system("cls");
+    }
+
+    if(key == 'd' && Tom.x_axis < 9 && room[Tom.y_axis][Tom.x_axis+1] != 1){
+        Tom.y_axis--; system("cls");
+    }
+
+    if(room[Tom.y_axis][Tom.x_axis] == 4){
+        cout << "YOU WIN!!" << endl;
+        system("pause");
+        exit(1);
+    }
+    string fightorFlee="";
+
     
 
+
+
+
+
+    
+    
+    }
   return 0;
 }

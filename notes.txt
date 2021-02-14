@@ -1,0 +1,3 @@
+rand() % 2 gives you 0 or 1
+
+https://www.youtube.com/watch?v=2AF9LE5ZqAg (C++ Tutorial - Dungeon Crawler) continue from 9:20
