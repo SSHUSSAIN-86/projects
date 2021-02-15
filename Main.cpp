@@ -4,20 +4,25 @@
 
 using namespace std;
 
-struct Monk
-{
-    int health;
-    int attack;
-    unsigned char x_axis;
-    unsigned char y_axis;
+class character{
+    public:
+        int health;
+    
 };
 
-struct Monster
-{   
-    int health;
-    int attack;
-    unsigned char x_axis;
-    unsigned char y_axis;
+class Monk: public character{
+    public: 
+        int attack;
+        unsigned char x_axis;
+        unsigned char y_axis;
+};
+
+class Monster: public character{
+    public:
+    
+        int attack;
+        unsigned char x_axis;
+        unsigned char y_axis;
 };
 
 int main()
@@ -39,6 +44,7 @@ int main()
     };
 
     Monk Tom;
+
     Tom.health = 15;
     Tom.attack = 3;
     Tom.x_axis = 5;
@@ -46,6 +52,7 @@ int main()
 
     Monster Hydra;
     Monster Mantis;
+    
     Hydra.health=6;
     Mantis.health=9;
     Hydra.x_axis=2;
@@ -118,7 +125,39 @@ int main()
     }
     string fightorFlee="";
 
-    
+    if(Tom.x_axis == 18+1 && Tom.y_axis == 12){
+        cout << "Fight or Flee and loose" << endl;
+        for(Hydra.health = 6; Hydra.health > 0;Hydra.health){
+            cin >> fightorFlee;
+            if(fightorFlee == "fight" || fightorFlee == "Fight" ){
+                Hydra.health = Hydra.health - Tom.attack;
+                cout << "Hydra health is: " << Hydra.health <<endl;
+
+                if(Hydra.health <= 0){
+                    cout << "Enemy defeated, continue" << endl;
+                    hero_win = true;
+                }
+
+                if(Hydra.health > 0){
+                    Tom.health = Tom.health - Hydra.attack;
+                    cout << "Tom's health: " << Tom.health << endl;
+                    cout << "\nWrite Fight again!" << endl;
+                    fightorFlee = "";
+                    hero_win = false;
+                }               
+            }
+            else if(fightorFlee == "Flee" || fightorFlee == "flee"){
+                cout << "You have lost!" << endl;
+                system("pause");
+                exit(1);
+            }
+
+        }
+            
+        
+    }
+
+
 
 
 
